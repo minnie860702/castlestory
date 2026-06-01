@@ -533,25 +533,7 @@ function applyData() {
     }
 }
 
-// 廣告側邊欄初始化
-(function initAdSidebar() {
-  const sidebar = document.getElementById('ad-sidebar');
-  const toggle = document.getElementById('ad-toggle');
-  if (!sidebar || !toggle) return;
 
-  // 切換展開/收合
-  toggle.addEventListener('click', function(e) {
-    e.stopPropagation();
-    sidebar.classList.toggle('open');
-  });
-
-  // 點擊外部自動收合
-  document.addEventListener('click', function(e) {
-    if (!sidebar.contains(e.target)) {
-      sidebar.classList.remove('open');
-    }
-  });
-})();
 
 // ====================
 // 插頁廣告邏輯
