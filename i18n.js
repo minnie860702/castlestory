@@ -8,7 +8,7 @@ window.__i18n = {
   ui: {
     'zh-TW': {
       intro_badge:       '🔮 心理測驗',
-      intro_title:       '探索你的內心世界',
+      intro_title:       '🏰古堡試煉：測出你的靈魂原型',
       intro_desc:        '一個關於選擇、勇氣與自我發現的故事。只需 3 分鐘，揭開你潛意識中的真實人格。',
       btn_start:         '開始探索',
       view_count_suffix: ' 人已測過',
@@ -25,7 +25,7 @@ window.__i18n = {
     },
     'en': {
       intro_badge:       '🔮 Personality Quiz',
-      intro_title:       'Explore Your Inner World',
+      intro_title:       '🏰 Castle Trial: Discover Your Soul Archetype',
       intro_desc:        'A tale of choice, courage, and self-discovery. Unveil your true persona in just 3 minutes.',
       btn_start:         'Start Journey',
       view_count_suffix: ' people tested',
