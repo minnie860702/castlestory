@@ -11,16 +11,16 @@ function initParticles() {
     for (let i = 0; i < 30; i++) {
         const p = document.createElement('div');
         p.className = 'particle';
-        const size = Math.random() * 3 + 1;
+        const size = Math.random() * 3 + 1.5; // Slightly larger for better glow
         p.style.width = size + 'px';
         p.style.height = size + 'px';
         p.style.left = Math.random() * 100 + '%';
         p.style.top = Math.random() * 100 + '%';
-        p.style.opacity = Math.random() * 0.5;
 
-        // Random drift animation
-        const duration = 10 + Math.random() * 20;
-        p.style.animation = `float ${duration}s infinite linear`;
+        // Random twinkle and drift animation
+        const duration = 4 + Math.random() * 6; // 4 to 10 seconds per cycle
+        const delay = Math.random() * 5; // Random start time
+        p.style.animation = `twinkle ${duration}s infinite ease-in-out ${delay}s alternate`;
         container.appendChild(p);
     }
 }
@@ -148,6 +148,7 @@ function showResult(skipAnimation = false) {
     document.getElementById('res-title').textContent = result.title;
     document.getElementById('res-desc').textContent = result.desc;
     document.getElementById('res-score').textContent = Math.min(100, Math.round((totalScore / (quizData.questions.length * 3)) * 100));
+    document.getElementById('res-rarity').textContent = result.rarity || 15;
     document.getElementById('res-hero-img').src = meta.image || 'https://source.unsplash.com/featured/?achievement';
 
     // Keywords
@@ -522,8 +523,13 @@ window.onload = () => {
         console.error('Quiz data not found!');
     }
 
-    // Mock view count
-    document.getElementById('view-count').textContent = Math.floor(Math.random() * 5000 + 1000).toLocaleString();
+    // Time-based deterministic view count (slowly increases, never decreases)
+    const startDate = new Date('2026-06-01T00:00:00Z').getTime();
+    const now = Date.now();
+    // Base count + 1 new person every ~6 minutes (approx 240 per day)
+    const baseCount = 8520;
+    const addedCount = Math.floor(Math.max(0, now - startDate) / (1000 * 60 * 6));
+    document.getElementById('view-count').textContent = (baseCount + addedCount).toLocaleString();
 };
 
 function applyData() {

@@ -74,8 +74,24 @@ body {
     position: absolute;
     background: white;
     border-radius: 50%;
-    opacity: 0.3;
+    opacity: 0;
     pointer-events: none;
+}
+
+@keyframes twinkle {
+    0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(-15px) scale(1.5);
+        opacity: 0.6;
+        box-shadow: 0 0 8px rgba(167, 139, 250, 0.8);
+    }
+    100% {
+        transform: translateY(-30px) scale(0.8);
+        opacity: 0;
+    }
 }
 
 .intro-bg {
@@ -426,7 +442,7 @@ body {
 
 .result-badge {
     font-size: 0.85rem;
-    color: var(--accent);
+    color: #fbbf24; /* Muted gold */
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 700;
@@ -437,9 +453,10 @@ body {
 .result-title {
     font-size: clamp(20px, 6.5vw, 2.5rem);
     font-weight: 800;
-    background: linear-gradient(to bottom, #fff, var(--accent));
+    background: linear-gradient(to bottom, #fef3c7, #b45309); /* Vintage Gold Gradient */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
     word-break: break-word;
     hyphens: auto;
 }
@@ -475,6 +492,7 @@ body {
 .result-scores {
     display: flex;
     justify-content: center;
+    gap: 20px;
     margin-bottom: 30px;
 }
 
@@ -484,6 +502,8 @@ body {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    flex: 1;
+    max-width: 160px;
 }
 
 .score-label {
